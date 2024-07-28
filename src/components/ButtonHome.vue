@@ -1,8 +1,10 @@
 <script setup></script>
 <template>
   <main>
-    <a class="btn btn-primary btn-lg" href="#" btn-l role="button"
-      >Generar Consulta</a
+    <RouterLink to="/formulario">
+      <a class="btn btn-primary btn-lg" href="#" btn-l role="button"
+        >Generar Consulta</a
+      ></RouterLink
     >
   </main>
 </template>

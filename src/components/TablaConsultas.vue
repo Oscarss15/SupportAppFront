@@ -1,77 +1,51 @@
-<script setup></script>
+<script setup>
+import { ref, onMounted } from "vue";
+
+const solicitudes = ref([]);
+
+const fetchSolicitudes = async () => {
+  try {
+    const response = await fetch("http://localhost:8080/api/v1/consult/all");
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const data = await response.json();
+    console.log("Fetched data:", data);
+    solicitudes.value = data;
+  } catch (error) {
+    console.error("Error fetching solicitudes:", error);
+  }
+};
+
+onMounted(() => {
+  fetchSolicitudes();
+});
+</script>
+
 <template>
   <main>
     <table class="table table-striped">
       <thead>
         <tr>
-          <th scope="col">Id</th>
           <th scope="col">Nombre Solicitante</th>
           <th scope="col">Fecha solicitud</th>
           <th scope="col">Tema consulta</th>
-          <th scope="col">Descripcion consulta</th>
+          <th scope="col">Descripción consulta</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Maria</td>
-          <td>10/12/2023</td>
-          <td>Pediatria</td>
-          <td>Descripcion1</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Maria</td>
-          <td>10/12/2023</td>
-          <td>Digestivo</td>
-          <td>Descripcion1</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Maria</td>
-          <td>10/12/2023</td>
-          <td>Recuperacion</td>
-          <td>Descripcion1</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Maria</td>
-          <td>10/12/2023</td>
-          <td>Recuperacion</td>
-          <td>Descripcion1</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Maria</td>
-          <td>10/12/2023</td>
-          <td>Recuperacion</td>
-          <td>Descripcion1</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Maria</td>
-          <td>10/12/2023</td>
-          <td>Recuperacion</td>
-          <td>Descripcion1</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Maria</td>
-          <td>10/12/2023</td>
-          <td>Recuperacion</td>
-          <td>Descripcion1</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Maria</td>
-          <td>10/12/2023</td>
-          <td>Recuperacion</td>
-          <td>Descripcion1</td>
+        <tr v-for="solicitud in solicitudes" :key="solicitud.idConsult">
+          <td>{{ solicitud.name }}</td>
+          <td>{{ solicitud.dateConsult.join("-") }}</td>
+          <!-- Asumiendo que dateConsult es un array y quieres mostrarlo como una fecha -->
+          <td>{{ solicitud.typeConsult }}</td>
+          <td>{{ solicitud.description }}</td>
         </tr>
       </tbody>
     </table>
   </main>
 </template>
+
 <style scoped>
 main {
   display: flex;
