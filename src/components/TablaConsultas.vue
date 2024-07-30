@@ -37,7 +37,6 @@ onMounted(() => {
         <tr v-for="solicitud in solicitudes" :key="solicitud.idConsult">
           <td>{{ solicitud.name }}</td>
           <td>{{ solicitud.dateConsult.join("-") }}</td>
-          <!-- Asumiendo que dateConsult es un array y quieres mostrarlo como una fecha -->
           <td>{{ solicitud.typeConsult }}</td>
           <td>{{ solicitud.description }}</td>
         </tr>

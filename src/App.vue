@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "./components/HelloWorld.vue";
+
 import Nav from "./components/Nav.vue";
 import Footer from "./components/Footer.vue";
 </script>

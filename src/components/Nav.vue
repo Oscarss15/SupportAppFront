@@ -9,14 +9,10 @@
         ><a class="nav-link" href="#">Formulario</a></RouterLink
       >
     </li>
-    <li class="nav-item">
-      <RouterLink to="/consultas">
-        <a class="nav-link" href="#">Consultas</a></RouterLink
-      >
-    </li>
+
     <li class="nav-item">
       <RouterLink to="/edicion">
-        <a class="nav-link" href="#">Edición</a></RouterLink
+        <a class="nav-link" href="#">Consultas</a></RouterLink
       >
     </li>
   </ul>
